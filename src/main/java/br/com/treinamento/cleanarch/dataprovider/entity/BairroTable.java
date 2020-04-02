@@ -14,11 +14,13 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "bairro")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class BairroTable {

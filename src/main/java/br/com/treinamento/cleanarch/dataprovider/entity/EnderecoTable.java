@@ -11,11 +11,13 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity(name = "endereco")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnderecoTable{
