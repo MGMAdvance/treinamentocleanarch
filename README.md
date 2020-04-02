@@ -1,5 +1,7 @@
 # Treinamento com Clean Architecture
 
+Treinamento em andamento, alguns links não funcionam pois não existem por enquanto.
+
 - [Core](src/main/java/br/com/treinamento/cleanarch/core)
   - [Entity](src/main/java/br/com/treinamento/cleanarch/core/entity)
   - [Gateway](src/main/java/br/com/treinamento/cleanarch/core/gateway)
