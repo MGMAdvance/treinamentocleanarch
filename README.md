@@ -1,4 +1,9 @@
-# Treinamento com Clean Architecture
+Treinamento com Clean Architecture
+===
+
+<p align="center">
+  <img alt="HitCount" src="http://hits.dwyl.com/MGMAdvance/treinamentocleanarch.svg">
+</p>
 
 Treinamento em andamento, alguns links não funcionam pois não existem por enquanto.
 
