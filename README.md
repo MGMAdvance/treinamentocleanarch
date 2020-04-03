@@ -14,6 +14,7 @@ Treinamento em andamento, alguns links não funcionam pois não existem por enqu
 - [Entrypoint](src/main/java/br/com/treinamento/cleanarch/entrypoint)
   - [Entity](src/main/java/br/com/treinamento/cleanarch/dataprovider/entity)
   - [Mapper](src/main/java/br/com/treinamento/cleanarch/dataprovider/mapper)
+- [Exception](src/main/java/br/com/treinamento/cleanarch/configuration/exception)
 - Resources
   - [Configuração da Aplicação](/src/main/resources)
 
