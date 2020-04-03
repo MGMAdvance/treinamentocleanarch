@@ -34,7 +34,7 @@ public class EnderecoTable{
     private Integer numero;
 
     @Column(name = "nr_cep")
-    private String cep;
+    private Integer cep;
 
     @ManyToOne
     @JoinColumn(name = "id_bairro")

@@ -17,7 +17,7 @@ public class EnderecoEntity {
 
     private Integer numero;
 
-    private String cep;
+    private Integer cep;
 
     private BairroEntity bairro;
 }
