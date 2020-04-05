@@ -24,10 +24,10 @@ public class ClienteRequestHttpModelMapper {
             .orElse(ClienteRequestHttpModel.builder().build());
     }
 
-    private static List<EnderecoRequestHttpModel> toEnderecos(List<EnderecoEntity> enderecos){
+    private static List<EnderecoRequestHttpModel> toEnderecos(List<EnderecoEntity> enderecosCliente){
         List<EnderecoRequestHttpModel> listaEnderecos = new ArrayList<>();
 
-        for(EnderecoEntity endereco : enderecos){
+        for(EnderecoEntity endereco : enderecosCliente){
             listaEnderecos.add(EnderecoRequestHttpModelMapper.to(endereco));
         }
 
@@ -44,7 +44,6 @@ public class ClienteRequestHttpModelMapper {
 
     public static ClienteEntity from(ClienteRequestHttpModel httpModel){
         return Optional.ofNullable(httpModel).map(cliente -> 
-            
             ClienteEntity.builder()
                 .nome(cliente.getNomeCliente())
                 .telefone(cliente.getTelefoneCliente())
@@ -56,10 +55,10 @@ public class ClienteRequestHttpModelMapper {
             .orElse(ClienteEntity.builder().build());
     }
 
-    private static List<EnderecoEntity> fromEnderecos(List<EnderecoRequestHttpModel> enderecos){
+    private static List<EnderecoEntity> fromEnderecos(List<EnderecoRequestHttpModel> enderecosCliente){
         List<EnderecoEntity> listaEnderecos = new ArrayList<>();
 
-        for(EnderecoRequestHttpModel endereco : enderecos){
+        for(EnderecoRequestHttpModel endereco : enderecosCliente){
             listaEnderecos.add(EnderecoRequestHttpModelMapper.from(endereco));
         }
 
