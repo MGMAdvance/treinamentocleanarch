@@ -27,7 +27,7 @@ public class ClienteDataProvider implements ClienteGateway{
 
             return entity;
         }catch(Exception e){
-            throw new DataBaseException();
+            throw new DataBaseException("[E01] Falha no cadastro do cliente!");
         }
 
     }

@@ -29,7 +29,7 @@ public class EnderecoDataProvider implements EnderecoGateway {
 
             return entity;
         }catch(Exception e){
-            throw new DataBaseException();
+            throw new DataBaseException("[E02] Falha ao cadastrar o endereço!");
         }
 
     }
@@ -47,7 +47,7 @@ public class EnderecoDataProvider implements EnderecoGateway {
 
             return listaEntity;
         }catch(Exception e){
-            throw new DataBaseException();
+            throw new DataBaseException("[E03] Falha ao buscar o endereço!");
         }
 
     }
