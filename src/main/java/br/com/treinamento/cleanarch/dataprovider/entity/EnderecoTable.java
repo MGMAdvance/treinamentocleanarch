@@ -31,7 +31,7 @@ public class EnderecoTable{
     private String logradouro;
 
     @Column(name = "nr_endereco")
-    private Integer numero;
+    private String numero;
 
     @Column(name = "nr_cep")
     private Integer cep;
