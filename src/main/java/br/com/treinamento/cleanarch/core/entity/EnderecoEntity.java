@@ -15,7 +15,7 @@ public class EnderecoEntity {
 
     private String logradouro;
 
-    private Integer numero;
+    private String numero;
 
     private Integer cep;
 

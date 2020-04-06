@@ -13,7 +13,7 @@ public class EnderecoRequestHttpModel {
 
     private String logradouro;
     private String bairro;
-    private Integer numero;
+    private String numero;
     private Integer cep;
     private String cidade;
     private String estado;

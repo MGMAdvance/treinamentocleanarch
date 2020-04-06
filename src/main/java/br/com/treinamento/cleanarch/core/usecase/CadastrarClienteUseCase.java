@@ -24,42 +24,51 @@ public class CadastrarClienteUseCase {
     private EnderecoGateway enderecoGateway;
 
     public ClienteEntity cadastrarCliente(ClienteEntity entity){
-        List<EnderecoEntity> enderecos = new ArrayList<>();
-
-        for(EnderecoEntity enderecoNovo : entity.getEnderecos()){
-            List<EnderecoEntity> enderecosCadastro = enderecoGateway.buscarEndereco(enderecoNovo.getCep());
-
-            if(enderecosCadastro.get(0).getId() > 0){
-                EnderecoEntity endereco = enderecosCadastro.get(0);
-
-                EnderecoEntity enderecoEntity = EnderecoEntity.builder()
-                    .logradouro(endereco.getLogradouro())
-                    .numero(enderecoNovo.getNumero())
-                    .cep(endereco.getCep())
-                    .bairro(BairroEntity.builder()
-                            .id(endereco.getId())
-                            .cidade(CidadeEntity.builder()
-                                    .id(endereco.getId())
-                                    .estado(EstadoEntity.builder()
-                                            .id(endereco.getId())
-                                            .build())
-                                    .build())
-                            .build())
-                    .build();
-
-                    enderecoEntity = enderecoGateway.cadastrarEndereco(enderecoEntity);
-
-                    enderecos.add(enderecoEntity);
-            } else {
-                EnderecoEntity enderecoEntity = enderecoGateway.cadastrarEndereco(enderecoNovo);
-
-                enderecos.add(enderecoEntity);
-            }
-        }
-
-        entity.setEnderecos(enderecos);
+//		Cria a lista que irá armazenar endereços que serão salvos
+		List<EnderecoEntity> enderecos = new ArrayList<>();
 		
-		ClienteEntity clienteSalvo = clienteGateway.cadastrarCliente(entity);
-		return clienteSalvo;
+        //		percorre os endereços que serão salvos
+                for(EnderecoEntity enderecoNovo : entity.getEnderecos()){
+        //			efetua busca de endereços cadastrados
+                    List<EnderecoEntity> enderecosCad = enderecoGateway.buscarEndereco(enderecoNovo.getCep());
+        //			verefica se existe retornou algum endereco
+                    //FIXME Adicionado validação para saber se a lista não está vazia
+                    if( !enderecosCad.isEmpty() && enderecosCad.get(0).getId() > 0 ) {
+        
+                        EnderecoEntity endereco = enderecosCad.get(0);
+        //				criou a entidade endereco que sera salva no banco de dados
+                        EnderecoEntity enderecoEntity = EnderecoEntity.builder()
+                                .logradouro(endereco.getLogradouro())
+                                .numero(enderecoNovo.getNumero())
+                                .cep(endereco.getCep())
+                                .bairro(BairroEntity.builder()
+                                        .id(endereco.getId())
+                                        .nome(endereco.getBairro().getNome())
+                                        .cidade(CidadeEntity.builder()
+                                                .id(endereco.getId())
+                                                .nome(endereco.getBairro().getCidade().getNome())
+                                                .estado(EstadoEntity.builder()
+                                                        .id(endereco.getId())
+                                                        .nome(endereco.getBairro().getCidade().getEstado().getNome())
+                                                        .build())
+                                                .build())
+                                        .build())
+                                .build();
+                        // Salva na lista o endereço reutilizando os dados de um endereço já cadastrado na base de dados
+                        enderecos.add(enderecoEntity);
+                    } else {
+                        // Salva na lista o endereço que não está cadastrado na base de dados
+                        enderecos.add(enderecoNovo);
+                    }
+                }
+                
+                entity.setEnderecos(enderecos);
+                
+                ClienteEntity clienteSalvo = clienteGateway.cadastrarCliente(entity);
+                
+                // forEach para salvar todos os endereços da lista, após salvar o cliente referente a cada endereço
+                enderecos.forEach(endereco -> endereco = enderecoGateway.cadastrarEndereco(endereco));
+                
+                return clienteSalvo;
     }
 }

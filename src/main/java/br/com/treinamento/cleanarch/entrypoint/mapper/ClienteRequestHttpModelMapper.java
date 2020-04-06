@@ -1,7 +1,5 @@
 package br.com.treinamento.cleanarch.entrypoint.mapper;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +17,7 @@ public class ClienteRequestHttpModelMapper {
                 .enderecos(toEnderecos(cliente.getEnderecos()))
                 .docCliente(cliente.getDocumento())
                 .emailCliente(cliente.getEmail())
-                .dataNascimento(cliente.getDataNascimento().toString())
+                .dataNascimento(cliente.getDataNascimento())
             .build())
             .orElse(ClienteRequestHttpModel.builder().build());
     }
@@ -34,14 +32,6 @@ public class ClienteRequestHttpModelMapper {
         return listaEnderecos;
     }
 
-
-    public static LocalDate dataParse(String data){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy");
-        LocalDate localDate = LocalDate.parse(data, formatter);
-
-        return localDate;
-    }
-
     public static ClienteEntity from(ClienteRequestHttpModel httpModel){
         return Optional.ofNullable(httpModel).map(cliente -> 
             ClienteEntity.builder()
@@ -50,7 +40,7 @@ public class ClienteRequestHttpModelMapper {
                 .enderecos(fromEnderecos(cliente.getEnderecos()))
                 .documento(cliente.getDocCliente())
                 .email(cliente.getEmailCliente())
-                .dataNascimento(dataParse(cliente.getDataNascimento()))
+                .dataNascimento(cliente.getDataNascimento())
             .build())
             .orElse(ClienteEntity.builder().build());
     }
