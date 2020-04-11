@@ -1,6 +1,10 @@
 # Entrypoint / Entity
 
-contrato
+Utilize algumas desses _Annotations_ para atribuir um novo nome ao campo:
+- `@JsonProperty("nome_cliente")`, define o nome que será passado pelo JSON;
+- `@JsonAlias({"nome_cliente","nomeDoGrandioso","nome"})`, crie uma ou várias aliás referente ao campo, use uma Array para colocar suas alias `{"dessa_forma"}`.
+
+Contrato do JSON:
 
 ```json
 {
@@ -17,7 +21,7 @@ contrato
       "bairro": "Vila dos Profissionais",
       "cep": 11706370,
       "cidade": "Praia Grande",
-      "Estado": "São Paulo"
+      "estado": "São Paulo"
     },
     {
       "id": 2,
@@ -26,7 +30,7 @@ contrato
       "bairro": "Vila dos Feriado",
       "cep": 11706373,
       "cidade": "Praia Grande",
-      "Estado": "São Paulo"
+      "estado": "São Paulo"
     }
   ]
 }

@@ -2,7 +2,9 @@ Treinamento com Clean Architecture
 ===
 
 <p align="center">
+  <img alt="Java 1.8" src="https://img.shields.io/static/v1?logo=java&label=Java&message=1.8&color=blue&style=flat-square">
   <img alt="HitCount" src="http://hits.dwyl.com/MGMAdvance/treinamentocleanarch.svg">
+  <img alt="License" src="https://img.shields.io/github/license/MGMAdvance/treinamentocleanarch?style=flat-square&logo=MIT">
 </p>
 
 Treinamento em andamento, alguns links não funcionam pois não existem por enquanto.
