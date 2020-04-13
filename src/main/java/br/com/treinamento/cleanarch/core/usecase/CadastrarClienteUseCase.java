@@ -32,7 +32,6 @@ public class CadastrarClienteUseCase {
         //			efetua busca de endereços cadastrados
                     List<EnderecoEntity> enderecosCad = enderecoGateway.buscarEndereco(enderecoNovo.getCep());
         //			verefica se existe retornou algum endereco
-                    //FIXME Adicionado validação para saber se a lista não está vazia
                     if( !enderecosCad.isEmpty() && enderecosCad.get(0).getId() > 0 ) {
         
                         EnderecoEntity endereco = enderecosCad.get(0);
