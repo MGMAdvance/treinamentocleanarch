@@ -32,7 +32,4 @@ public class ClienteDataProvider implements ClienteGateway{
 
     }
 
-    public ClienteEntity buscarCliente(Long id){
-        return null;
-    }
 }
