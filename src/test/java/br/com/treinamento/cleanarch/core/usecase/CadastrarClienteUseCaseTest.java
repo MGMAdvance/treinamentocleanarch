@@ -27,10 +27,10 @@ public class CadastrarClienteUseCaseTest {
 	private CadastrarClienteUseCase clienteUseCase;
 	
 	@Mock
-    private ClienteDataProvider clienteGateway;
+    private ClienteDataProvider clienteDataprovider;
 
     @Mock
-    private EnderecoDataProvider enderecoGateway;
+    private EnderecoDataProvider enderecoDataprovider;
     
     @Test
     public void cadastrarClienteUseCase_success_with_feign() {
@@ -83,9 +83,9 @@ public class CadastrarClienteUseCaseTest {
     			.enderecos(enderecosSalvo)
     			.build();
     	
-    	Mockito.when(enderecoGateway.buscarEndereco(Mockito.anyInt())).thenReturn(enderecosFeign);
-    	Mockito.when(enderecoGateway.cadastrarEndereco(Mockito.any(EnderecoEntity.class))).thenReturn(enderecosSalvo.get(0));
-    	Mockito.when(clienteGateway.cadastrarCliente(Mockito.any(ClienteEntity.class))).thenReturn(clienteSalvo);
+    	Mockito.when(enderecoDataprovider.buscarEndereco(Mockito.anyInt())).thenReturn(enderecosFeign);
+    	Mockito.when(enderecoDataprovider.cadastrarEndereco(Mockito.any(EnderecoEntity.class))).thenReturn(enderecosSalvo.get(0));
+    	Mockito.when(clienteDataprovider.cadastrarCliente(Mockito.any(ClienteEntity.class))).thenReturn(clienteSalvo);
     	
     	ClienteEntity response = clienteUseCase.cadastrarCliente(clienteTeste);
     	
@@ -129,9 +129,9 @@ public class CadastrarClienteUseCaseTest {
     			.enderecos(enderecosSalvo)
     			.build();
     	
-    	Mockito.when(enderecoGateway.buscarEndereco(Mockito.anyInt())).thenReturn(new ArrayList<>());
-    	Mockito.when(enderecoGateway.cadastrarEndereco(Mockito.any(EnderecoEntity.class))).thenReturn(enderecosNovo.get(0));
-    	Mockito.when(clienteGateway.cadastrarCliente(Mockito.any(ClienteEntity.class))).thenReturn(clienteSalvo);
+    	Mockito.when(enderecoDataprovider.buscarEndereco(Mockito.anyInt())).thenReturn(new ArrayList<>());
+    	Mockito.when(enderecoDataprovider.cadastrarEndereco(Mockito.any(EnderecoEntity.class))).thenReturn(enderecosNovo.get(0));
+    	Mockito.when(clienteDataprovider.cadastrarCliente(Mockito.any(ClienteEntity.class))).thenReturn(clienteSalvo);
     	
     	ClienteEntity response = clienteUseCase.cadastrarCliente(clienteTeste);
     	

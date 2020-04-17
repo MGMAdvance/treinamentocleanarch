@@ -26,7 +26,7 @@ import br.com.treinamento.cleanarch.dataprovider.entity.EstadoTable;
 import br.com.treinamento.cleanarch.dataprovider.repository.ClienteRepository;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CadastrarClienteDataProviderTest {
+public class ClienteDataProviderTest {
 
 	@InjectMocks
 	private ClienteDataProvider clienteDataProvider;
